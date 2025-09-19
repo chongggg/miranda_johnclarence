@@ -7,7 +7,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * Automatically generated via CLI.
  */
 class StudentsModel extends Model {
-    protected $table = 'student';
+    protected $table = 'students';
     protected $primary_key = 'id';
     
     public function __construct()
