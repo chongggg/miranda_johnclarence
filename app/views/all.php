@@ -78,7 +78,7 @@
         <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md shadow-lg z-50">
             <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
                 <span class="text-xl font-bold tracking-wide">🎓 Student Management</span>
-                <a href="index.php/students/create" 
+                <a href="/students/create" 
                    class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 
                           px-5 py-2 rounded-xl shadow-lg hover:scale-105 transition">
                     + Add Student
@@ -174,11 +174,11 @@
                                     <td class="py-3 px-6"><?= htmlspecialchars($s['first_name']) ?></td>
                                     <td class="py-3 px-6 text-gray-300"><?= htmlspecialchars($s['email']) ?></td>
                                     <td class="py-3 px-6 text-center space-x-2">
-                                        <a href="index.php/students/edit/<?= $s['id'] ?>" 
+                                        <a href="/students/edit/<?= $s['id'] ?>" 
                                            class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-1 rounded-md shadow hover:shadow-yellow-400/50 transition">
                                             Edit
                                         </a>
-                                        <a href="index.php/students/delete/<?= $s['id'] ?>" 
+                                        <a href="/students/delete/<?= $s['id'] ?>" 
                                            onclick="return confirm('Are you sure you want to delete this student?')" 
                                            class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md shadow-md shadow-red-500/50 transition">
                                             Delete
