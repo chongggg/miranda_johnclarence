@@ -198,7 +198,7 @@
                             Update Student
                         </button>
 
-                        <a href="/students" class="px-8 rounded-xl btn-glass hover-scale transition-all inline-flex items-center justify-center text-white">
+                        <a href="/" class="px-8 rounded-xl btn-glass hover-scale transition-all inline-flex items-center justify-center text-white">
                             Cancel
                         </a>
                     </div>

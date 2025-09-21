@@ -153,7 +153,7 @@ class StudentsController extends Controller {
         $updated = $this->StudentsModel->update($id, $postData);
         if ($updated) {
             $_SESSION['success'] = "Student updated successfully.";
-            header('Location: /students');
+            header('Location: /');
             exit;
         } else {
             $_SESSION['error'] = "Failed to update student.";
