@@ -1,5 +1,6 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
+
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
@@ -34,18 +35,35 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * @license https://opensource.org/licenses/MIT MIT License
  */
 
-/*
+/**
 | -------------------------------------------------------------------
 | URI ROUTING
 | -------------------------------------------------------------------
 | Here is where you can register web routes for your application.
 |
-|
 */
-$router->get('/', 'StudentsController::index');        // list students
-$router->get('/students/create', 'StudentsController::create'); 
-$router->post('/students/store', 'StudentsController::store'); 
-$router->get('/students/edit/{id}', 'StudentsController::edit'); 
-$router->post('/students/update/{id}', 'StudentsController::update'); 
-$router->get('/students/delete/{id}', 'StudentsController::delete');
-$router->get('students/index/{page}', 'StudentsController::index');
+
+// Home route - redirects to students list
+$router->get('/', 'StudentsController::index');
+
+// Students main routes (organized logically)
+$router->get('/students', 'StudentsController::index');                    // Main students list
+$router->get('/students/index', 'StudentsController::index');              // Alternative path to list
+$router->get('/students/index/{page}', 'StudentsController::index');       // Paginated list
+
+// Create new student
+$router->get('/students/create', 'StudentsController::create');             // Show create form
+$router->post('/students/store', 'StudentsController::store');             // Handle form submission
+
+// Edit existing student
+$router->get('/students/edit/{id}', 'StudentsController::edit');           // Show edit form
+$router->post('/students/update/{id}', 'StudentsController::update');      // Handle update
+
+// Delete student
+$router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete (consider POST for security)
+$router->post('/students/delete/{id}', 'StudentsController::delete');      // DELETE via POST (more secure)
+
+// API-style routes (optional - for AJAX operations)
+$router->post('/api/students', 'StudentsController::store');               // Create student via API
+$router->put('/api/students/{id}', 'StudentsController::update');          // Update student via API  
+$router->delete('/api/students/{id}', 'StudentsController::delete');       // Delete student via API
