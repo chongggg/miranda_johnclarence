@@ -99,11 +99,11 @@ class StudentsController extends Controller {
         $inserted = $this->StudentsModel->insert($postData);
         if ($inserted) {
             $_SESSION['success'] = "Student added successfully.";
-            header('Location: /students');
+            header('Location: /');
             exit;
         } else {
             $_SESSION['error'] = "Failed to add student.";
-            header('Location: /students/create');
+            header('Location: /create');
             exit;
         }
     }
@@ -113,7 +113,7 @@ class StudentsController extends Controller {
         $student = $this->StudentsModel->find($id);
         if (!$student) {
             $_SESSION['error'] = "Student not found.";
-            header('Location: /students');
+            header('Location: /');
             exit;
         }
         $data['student'] = $student;
@@ -125,7 +125,7 @@ class StudentsController extends Controller {
         $student = $this->StudentsModel->find($id);
         if (!$student) {
             $_SESSION['error'] = "Student not found.";
-            header('Location: /students');
+            header('Location: /');
             exit;
         }
 
@@ -138,14 +138,14 @@ class StudentsController extends Controller {
         // Basic validation
         if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
             $_SESSION['error'] = "All fields are required.";
-            header("Location: /students/edit/{$id}");
+            header("Location: /edit/{$id}");
             exit;
         }
 
         // Email validation
         if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
             $_SESSION['error'] = "Please enter a valid email address.";
-            header("Location: /students/edit/{$id}");
+            header("Location: /edit/{$id}");
             exit;
         }
 
@@ -157,7 +157,7 @@ class StudentsController extends Controller {
             exit;
         } else {
             $_SESSION['error'] = "Failed to update student.";
-            header("Location: /students/edit/{$id}");
+            header("Location: /edit/{$id}");
             exit;
         }
     }
@@ -167,7 +167,7 @@ class StudentsController extends Controller {
         $student = $this->StudentsModel->find($id);
         if (!$student) {
             $_SESSION['error'] = "Student not found.";
-            header('Location: /students');
+            header('Location: /');
             exit;
         }
 
@@ -177,7 +177,7 @@ class StudentsController extends Controller {
         } else {
             $_SESSION['error'] = "Failed to delete student.";
         }
-        header('Location: /students');
+        header('Location: /');
         exit;
     }
 }
