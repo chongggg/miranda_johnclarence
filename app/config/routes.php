@@ -1,5 +1,6 @@
 <?php
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
+
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
@@ -34,18 +35,37 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * @license https://opensource.org/licenses/MIT MIT License
  */
 
-/*
+/**
 | -------------------------------------------------------------------
 | URI ROUTING
 | -------------------------------------------------------------------
 | Here is where you can register web routes for your application.
 |
-|
 */
-$router->get('/', 'StudentsController::index');        // list students
-$router->get('create', 'StudentsController::create'); 
-$router->post('store', 'StudentsController::store'); 
-$router->get('edit/{id}', 'StudentsController::edit'); 
-$router->post('update/{id}', 'StudentsController::update'); 
-$router->get('delete/{id}', 'StudentsController::delete');
-$router->get('index/{page}', 'StudentsController::index');
+
+// Home route - redirects to students list
+$router->get('/', 'StudentsController::index');
+
+// Students routes - CORRECTED to match your existing views
+$router->get('/students', 'StudentsController::index');                    // Main students list
+$router->get('/students/index', 'StudentsController::index');              // Alternative list path
+$router->get('/students/index/{page}', 'StudentsController::index');       // Paginated list
+
+// Create student routes
+$router->get('/students/create', 'StudentsController::create');             // Show create form
+$router->post('/students/store', 'StudentsController::store');             // Handle create form
+
+// Edit student routes  
+$router->get('/students/edit/{id}', 'StudentsController::edit');           // Show edit form
+$router->post('/students/update/{id}', 'StudentsController::update');      // Handle edit form
+
+// Delete student route
+$router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete student
+
+// Alternative shorter routes (if you want them - but keep /students/ ones for compatibility)
+// $router->get('/create', 'StudentsController::create');
+// $router->post('/store', 'StudentsController::store');
+// $router->get('/edit/{id}', 'StudentsController::edit');
+// $router->post('/update/{id}', 'StudentsController::update');
+// $router->get('/delete/{id}', 'StudentsController::delete');
+// $router->get('/index/{page}', 'StudentsController::index');

@@ -103,7 +103,7 @@ class StudentsController extends Controller {
             exit;
         } else {
             $_SESSION['error'] = "Failed to add student.";
-            header('Location: /create');
+            header('Location: /students/create');
             exit;
         }
     }
@@ -138,14 +138,14 @@ class StudentsController extends Controller {
         // Basic validation
         if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
             $_SESSION['error'] = "All fields are required.";
-            header("Location: /edit/{$id}");
+            header("Location: /students/edit/{$id}");
             exit;
         }
 
         // Email validation
         if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
             $_SESSION['error'] = "Please enter a valid email address.";
-            header("Location: /edit/{$id}");
+            header("Location: /students/edit/{$id}");
             exit;
         }
 
@@ -157,7 +157,7 @@ class StudentsController extends Controller {
             exit;
         } else {
             $_SESSION['error'] = "Failed to update student.";
-            header("Location: /edit/{$id}");
+            header("Location: /students/edit/{$id}");
             exit;
         }
     }

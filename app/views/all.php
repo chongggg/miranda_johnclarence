@@ -78,7 +78,7 @@
         <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md shadow-lg z-50">
             <div class="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
                 <span class="text-xl font-bold tracking-wide">🎓 Student Management</span>
-                <a href="create" 
+                <a href="/students/create" 
                    class="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 
                           px-5 py-2 rounded-xl shadow-lg hover:scale-105 transition">
                     + Add Student

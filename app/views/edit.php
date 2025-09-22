@@ -136,7 +136,7 @@
                     </span>
                 </div>
 
-                <form method="POST" action="/update/<?= $student['id'] ?>" class="space-y-6">
+                <form method="POST" action="/students/update/<?= $student['id'] ?>" class="space-y-6">
                     <div class="space-y-3">
                         <label for="first_name" class="flex items-center gap-2 text-base font-medium">
                             <i data-lucide="user" class="h-4 w-4 text-blue-300"></i>
