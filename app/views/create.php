@@ -69,7 +69,7 @@
     <div class="container mx-auto p-8 max-w-4xl relative z-10">
         <!-- Header -->
         <div class="flex items-center gap-4 mb-8">
-            <a href="/" class="rounded-xl border border-white/30 hover-scale transition-all glass-card px-4 py-2 inline-flex items-center gap-2 text-gray-100 hover:bg-white/10">
+            <a href="/students" class="rounded-xl border border-white/30 hover-scale transition-all glass-card px-4 py-2 inline-flex items-center gap-2 text-gray-100 hover:bg-white/10">
                 <i data-lucide="arrow-left" class="h-5 w-5"></i>
                 Back to Students
             </a>

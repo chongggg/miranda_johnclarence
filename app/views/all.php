@@ -174,11 +174,11 @@
                                     <td class="py-3 px-6"><?= htmlspecialchars($s['first_name']) ?></td>
                                     <td class="py-3 px-6 text-gray-300"><?= htmlspecialchars($s['email']) ?></td>
                                     <td class="py-3 px-6 text-center space-x-2">
-                                        <a href="/edit/<?= $s['id'] ?>" 
+                                        <a href="students/edit/<?= $s['id'] ?>" 
                                            class="bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-1 rounded-md shadow hover:shadow-yellow-400/50 transition">
                                             Edit
                                         </a>
-                                        <a href="/delete/<?= $s['id'] ?>" 
+                                        <a href="/students/delete/<?= $s['id'] ?>" 
                                            onclick="return confirm('Are you sure you want to delete this student?')" 
                                            class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md shadow-md shadow-red-500/50 transition">
                                             Delete
