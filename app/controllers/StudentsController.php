@@ -74,110 +74,110 @@ class StudentsController extends Controller {
     }
 
     public function store()
-    {
-        $postData = [
-            'first_name' => trim($_POST['first_name'] ?? ''),
-            'last_name'  => trim($_POST['last_name'] ?? ''),
-            'email'      => trim($_POST['email'] ?? '')
-        ];
+{
+    $postData = [
+        'first_name' => trim($_POST['first_name'] ?? ''),
+        'last_name'  => trim($_POST['last_name'] ?? ''),
+        'email'      => trim($_POST['email'] ?? '')
+    ];
 
-        // Basic validation
-        if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
-            $_SESSION['error'] = "All fields are required.";
-            header('Location: /students/create');
-            exit;
-        }
-
-        // Email validation
-        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = "Please enter a valid email address.";
-            header('Location: /students/create');
-            exit;
-        }
-
-        // Insert record
-        $inserted = $this->StudentsModel->insert($postData);
-        if ($inserted) {
-            $_SESSION['success'] = "Student added successfully.";
-            header('Location: /');
-            exit;
-        } else {
-            $_SESSION['error'] = "Failed to add student.";
-            header('Location: /students/create');
-            exit;
-        }
-    }
-
-    public function edit($id)
-    {
-        $student = $this->StudentsModel->find($id);
-        if (!$student) {
-            $_SESSION['error'] = "Student not found.";
-            header('Location: /');
-            exit;
-        }
-        $data['student'] = $student;
-        $this->call->view('edit', $data);
-    }
-
-    public function update($id)
-    {
-        $student = $this->StudentsModel->find($id);
-        if (!$student) {
-            $_SESSION['error'] = "Student not found.";
-            header('Location: /');
-            exit;
-        }
-
-        $postData = [
-            'first_name' => trim($_POST['first_name'] ?? ''),
-            'last_name'  => trim($_POST['last_name'] ?? ''),
-            'email'      => trim($_POST['email'] ?? '')
-        ];
-
-        // Basic validation
-        if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
-            $_SESSION['error'] = "All fields are required.";
-            header("Location: /students/edit/{$id}");
-            exit;
-        }
-
-        // Email validation
-        if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = "Please enter a valid email address.";
-            header("Location: /students/edit/{$id}");
-            exit;
-        }
-
-        // Update record
-        $updated = $this->StudentsModel->update($id, $postData);
-        if ($updated) {
-            $_SESSION['success'] = "Student updated successfully.";
-            header('Location: /');
-            exit;
-        } else {
-            $_SESSION['error'] = "Failed to update student.";
-            header("Location: /students/edit/{$id}");
-            exit;
-        }
-    }
-
-    public function delete($id)
-    {
-        $student = $this->StudentsModel->find($id);
-        if (!$student) {
-            $_SESSION['error'] = "Student not found.";
-            header('Location: /');
-            exit;
-        }
-
-        $deleted = $this->StudentsModel->delete($id);
-        if ($deleted) {
-            $_SESSION['success'] = "Student deleted successfully.";
-        } else {
-            $_SESSION['error'] = "Failed to delete student.";
-        }
-        header('Location: /');
+    // Basic validation
+    if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
+        $_SESSION['error'] = "All fields are required.";
+        header('Location: /students/create');
         exit;
     }
+
+    // Email validation
+    if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Please enter a valid email address.";
+        header('Location: /students/create');
+        exit;
+    }
+
+    // Insert record
+    $inserted = $this->StudentsModel->insert($postData);
+    if ($inserted) {
+        $_SESSION['success'] = "Student added successfully.";
+        header('Location: /students'); // Changed from '/' to '/students'
+        exit;
+    } else {
+        $_SESSION['error'] = "Failed to add student.";
+        header('Location: /students/create');
+        exit;
+    }
+}
+
+public function edit($id)
+{
+    $student = $this->StudentsModel->find($id);
+    if (!$student) {
+        $_SESSION['error'] = "Student not found.";
+        header('Location: /students'); // Changed from '/' to '/students'
+        exit;
+    }
+    $data['student'] = $student;
+    $this->call->view('edit', $data);
+}
+
+public function update($id)
+{
+    $student = $this->StudentsModel->find($id);
+    if (!$student) {
+        $_SESSION['error'] = "Student not found.";
+        header('Location: /students'); // Changed from '/' to '/students'
+        exit;
+    }
+
+    $postData = [
+        'first_name' => trim($_POST['first_name'] ?? ''),
+        'last_name'  => trim($_POST['last_name'] ?? ''),
+        'email'      => trim($_POST['email'] ?? '')
+    ];
+
+    // Basic validation
+    if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
+        $_SESSION['error'] = "All fields are required.";
+        header("Location: /students/edit/{$id}");
+        exit;
+    }
+
+    // Email validation
+    if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = "Please enter a valid email address.";
+        header("Location: /students/edit/{$id}");
+        exit;
+    }
+
+    // Update record
+    $updated = $this->StudentsModel->update($id, $postData);
+    if ($updated) {
+        $_SESSION['success'] = "Student updated successfully.";
+        header('Location: /students'); // Changed from '/' to '/students'
+        exit;
+    } else {
+        $_SESSION['error'] = "Failed to update student.";
+        header("Location: /students/edit/{$id}");
+        exit;
+    }
+}
+
+public function delete($id)
+{
+    $student = $this->StudentsModel->find($id);
+    if (!$student) {
+        $_SESSION['error'] = "Student not found.";
+        header('Location: /students'); // Changed from '/' to '/students'
+        exit;
+    }
+
+    $deleted = $this->StudentsModel->delete($id);
+    if ($deleted) {
+        $_SESSION['success'] = "Student deleted successfully.";
+    } else {
+        $_SESSION['error'] = "Failed to delete student.";
+    }
+    header('Location: /students'); // Changed from '/' to '/students'
+    exit;
+}
 }
