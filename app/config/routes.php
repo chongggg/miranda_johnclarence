@@ -62,6 +62,8 @@ $router->post('/students/update/{id}', 'StudentsController::update');      // Ha
 // Delete student route
 $router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete student
 
+$router->get('/login', 'StudentsController::login');  
+
 // Alternative shorter routes (if you want them - but keep /students/ ones for compatibility)
 // $router->get('/create', 'StudentsController::create');
 // $router->post('/store', 'StudentsController::store');

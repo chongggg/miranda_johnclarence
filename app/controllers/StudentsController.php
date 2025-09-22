@@ -180,4 +180,9 @@ public function delete($id)
     header('Location: /students'); // Changed from '/' to '/students'
     exit;
 }
+
+function login()
+{
+    $this->call->view('login');
+}
 }
