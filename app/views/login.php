@@ -193,7 +193,17 @@
                                        placeholder="Full Name" 
                                        required>
                                 <label class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
-                                    👤 Full Name
+                                    👤 First Name
+                                </label>
+                            </div>
+
+                             <div class="relative">
+                                <input type="text" 
+                                       class="form-input w-full px-4 py-3 rounded-lg text-white placeholder-transparent focus:outline-none" 
+                                       placeholder="Full Name" 
+                                       required>
+                                <label class="form-label absolute left-4 top-3 text-gray-300 pointer-events-none">
+                                    👤 Last Name
                                 </label>
                             </div>
 
