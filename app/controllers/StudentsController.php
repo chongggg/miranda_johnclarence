@@ -98,6 +98,7 @@ public function store()
     if ($inserted) {
         $_SESSION['success'] = "Student added successfully.";
        header("Location: /views/all.php"); // redirect to home Students page
+       $this->call->view('all');
     } else {
         $_SESSION['error'] = "Failed to add student.";
         return redirect('/students/create');
