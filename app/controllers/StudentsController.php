@@ -78,7 +78,7 @@ public function create()
         ];
 
         $this->StudentsModel->insert($data);
-        redirect('/students');   // 👈 go back to your home page
+        redirect('/');   // 👈 go back to your home page
     }
 
     $this->call->view('create');

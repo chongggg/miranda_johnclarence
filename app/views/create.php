@@ -92,7 +92,7 @@
                     <h2 class="text-xl font-semibold">Student Information</h2>
                 </div>
 
-                <form method="POST" action="/" class="space-y-6">
+                <form method="POST" action="/students/create" class="space-y-6">
                     <div class="space-y-3">
                         <label for="first_name" class="flex items-center gap-2 text-base font-medium">
                             <i data-lucide="user" class="h-4 w-4 text-blue-400"></i>
