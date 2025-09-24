@@ -52,8 +52,9 @@ $router->get('/students/index', 'StudentsController::index');              // Al
 $router->get('/students/index/{page}', 'StudentsController::index');       // Paginated list
 
 // Create student routes
-$router->get('/students/create', 'StudentsController::create');             // Show create form
-$router->post('/students/store', 'StudentsController::store');             // Handle create form
+$router->get('/students/create', 'StudentsController::create');   // Show form
+$router->post('/students/create', 'StudentsController::create');  // Handle form (no store())
+         // Handle create form
 
 // Edit student routes  
 $router->get('/students/edit/{id}', 'StudentsController::edit');           // Show edit form

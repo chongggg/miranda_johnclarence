@@ -68,10 +68,21 @@ class StudentsController extends Controller {
         $this->call->view('all', $data);
     }
 
-    public function create()
-    {
-        $this->call->view('create');
+public function create()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = [
+            'first_name' => trim($_POST['first_name']),
+            'last_name'  => trim($_POST['last_name']),
+            'email'      => trim($_POST['email'])
+        ];
+
+        $this->StudentsModel->insert($data);
+        redirect('/students');   // 👈 go back to your home page
     }
+
+    $this->call->view('students/create');
+}
 
 public function store()
 {
