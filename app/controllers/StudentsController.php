@@ -97,7 +97,7 @@ public function store()
     $inserted = $this->StudentsModel->insert($postData);
     if ($inserted) {
         $_SESSION['success'] = "Student added successfully.";
-        return redirect('/students');   // redirect to home Students page
+       header("Location: /views/all.php"); // redirect to home Students page
     } else {
         $_SESSION['error'] = "Failed to add student.";
         return redirect('/students/create');
