@@ -118,51 +118,23 @@ public function create()
 // }
 
 
-    public function edit($id)
-    {
-        $student = $this->StudentsModel->find($id);
-        if (!$student) {
-            $_SESSION['error'] = "Student not found.";
-            header('Location: /students');
-            exit;
-        }
+public function edit($id)
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = [
+            'first_name' => trim($_POST['first_name']),
+            'last_name'  => trim($_POST['last_name']),
+            'email'      => trim($_POST['email'])
+        ];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $postData = [
-                'first_name' => trim($_POST['first_name'] ?? ''),
-                'last_name'  => trim($_POST['last_name'] ?? ''),
-                'email'      => trim($_POST['email'] ?? '')
-            ];
-
-            if (empty($postData['first_name']) || empty($postData['last_name']) || empty($postData['email'])) {
-                $_SESSION['error'] = "All fields are required.";
-                header("Location: /students/edit/{$id}");
-                exit;
-            }
-
-            if (!filter_var($postData['email'], FILTER_VALIDATE_EMAIL)) {
-                $_SESSION['error'] = "Please enter a valid email address.";
-                header("Location: /students/edit/{$id}");
-                exit;
-            }
-
-            if ($this->StudentsModel->update($id, $postData)) {
-                $_SESSION['success'] = "Student updated successfully.";
-                header('Location: /students');
-                exit;
-            } else {
-                $_SESSION['error'] = "Failed to update student.";
-                header("Location: /students/edit/{$id}");
-                exit;
-            }
-        }
-
-        $data = ['student' => $student];
-        if (!empty($_SESSION['error'])) { $data['error'] = $_SESSION['error']; unset($_SESSION['error']); }
-        if (!empty($_SESSION['success'])) { $data['success'] = $_SESSION['success']; unset($_SESSION['success']); }
-
-        $this->call->view('edit', $data);
+        $this->StudentsModel->update($id, $data);
+        redirect('/');   // 👈 go back to home after update
     }
+
+    $student = $this->StudentsModel->find($id);
+    $this->call->view('edit', ['student' => $student]);
+}
+
 
 public function update($id)
 {
