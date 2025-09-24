@@ -95,11 +95,12 @@ public function store()
 
     // Insert record
     $inserted = $this->StudentsModel->insert($postData);
-    if ($inserted) {
-        $_SESSION['success'] = "Student added successfully.";
-       header("Location: /views/all.php"); // redirect to home Students page
-       $this->call->view('all');
-    } else {
+if ($inserted) {
+    $_SESSION['success'] = "Student added successfully.";
+    header("Location: /");
+    exit;  // 👈 this is critical
+}
+ else {
         $_SESSION['error'] = "Failed to add student.";
         return redirect('/students/create');
     }
