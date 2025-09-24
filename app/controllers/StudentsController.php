@@ -81,7 +81,7 @@ public function create()
         redirect('/students');   // 👈 go back to your home page
     }
 
-    $this->call->view('students/create');
+    $this->call->view('create');
 }
 
 public function store()
