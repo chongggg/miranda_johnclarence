@@ -57,8 +57,9 @@ $router->post('/students/create', 'StudentsController::create');  // Handle form
          // Handle create form
 
 // Edit student routes  
-$router->get('/students/edit/{id}', 'StudentsController::edit');           // Show edit form
-$router->post('/students/update/{id}', 'StudentsController::update');      // Handle edit form
+$router->get('/students/edit/{id}', 'StudentsController::edit');
+$router->post('/students/edit/{id}', 'StudentsController::edit');
+    // Handle edit form
 
 // Delete student route
 $router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete student
