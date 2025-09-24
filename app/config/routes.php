@@ -46,7 +46,6 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 // Home route - redirects to students list
 $router->get('/', 'StudentsController::index');
 
-// Students routes - CORRECTED to match your existing views
 $router->get('/students', 'StudentsController::index');                    // Main students list
 $router->get('/students/index', 'StudentsController::index');              // Alternative list path
 $router->get('/students/index/{page}', 'StudentsController::index');       // Paginated list
@@ -54,12 +53,10 @@ $router->get('/students/index/{page}', 'StudentsController::index');       // Pa
 // Create student routes
 $router->get('/students/create', 'StudentsController::create');   // Show form
 $router->post('/students/create', 'StudentsController::create');  // Handle form (no store())
-         // Handle create form
 
-// Edit student routes  
+
 $router->get('/students/edit/{id}', 'StudentsController::edit');
 $router->post('/students/edit/{id}', 'StudentsController::edit');
-    // Handle edit form
 
 // Delete student route
 $router->get('/students/delete/{id}', 'StudentsController::delete');       // Delete student
